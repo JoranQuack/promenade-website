@@ -91,7 +91,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${mundial.variable} antialiased`}>{children}</body>
+      <body className={`${mundial.variable} antialiased bg-dark`}>
+        {children}
+      </body>
     </html>
   );
 }
