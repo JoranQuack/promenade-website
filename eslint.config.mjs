@@ -119,7 +119,6 @@ const eslintConfig = [
       "no-else-return": "error",
       "no-empty-function": "error",
       "no-lonely-if": "error",
-      "no-magic-numbers": ["warn", { ignore: [0, 1, -1] }],
       "no-negated-condition": "error",
       "no-nested-ternary": "error",
       "no-param-reassign": "error",
