@@ -3,8 +3,8 @@
 @theme {
   --color-dark: #141414;
   --color-bright: #f4f1e9;
-  --color-red: #8b2c30;
-  --color-blue: #4d4d80;
+  --color-pred: #8b2c30;
+  --color-pblue: #4d4d80;
 
   --font-family-sans: var(--font-mundial), Arial, Helvetica, sans-serif;
   --font-family-mundial: var(--font-mundial), sans-serif;

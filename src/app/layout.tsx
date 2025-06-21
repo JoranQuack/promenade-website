@@ -84,15 +84,13 @@ export const metadata: Metadata = {
     "Promenade is a barbershop quartet based in Christchurch, New Zealand.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout(
+  props: React.PropsWithChildren<object>
+): React.ReactElement {
   return (
     <html lang="en">
       <body className={`${mundial.variable} antialiased bg-dark`}>
-        {children}
+        {props.children}
       </body>
     </html>
   );
