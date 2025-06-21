@@ -34,7 +34,7 @@ interface HeaderProps {
 
 export function Header(_props: HeaderProps): React.ReactElement {
   return (
-    <header className="w-3/4 bg-black/20 backdrop-blur-md flex items-center justify-between rounded-b-2xl p-5 px-8 fixed z-10">
+    <header className="w-8/12 bg-black/20 backdrop-blur-md flex items-center justify-between rounded-b-2xl p-5 px-8 fixed z-10">
       <Link className="" href="/">
         <Image
           alt="logo"

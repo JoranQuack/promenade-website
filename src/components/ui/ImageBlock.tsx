@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 
-const DEFAULT_IMAGE_WIDTH = 1000;
+const DEFAULT_IMAGE_WIDTH = 1500;
 const DEFAULT_IMAGE_HEIGHT = 1000;
 const PARALLAX_SCROLL_FACTOR = 0.3;
 const MOUSE_SMOOTHING_FACTOR = 0.02;
@@ -91,7 +91,6 @@ export default function ImageBlock({
         width={width}
       />
 
-      {/* Mouse-following vignette overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
