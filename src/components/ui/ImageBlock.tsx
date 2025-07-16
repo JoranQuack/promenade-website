@@ -7,6 +7,7 @@ const DEFAULT_IMAGE_WIDTH = 1500;
 const DEFAULT_IMAGE_HEIGHT = 1000;
 const PARALLAX_SCROLL_FACTOR = 0.3;
 const MOUSE_SMOOTHING_FACTOR = 0.02;
+const VIGNETTE_SMOOTHING_FACTOR = 0.01;
 
 export default function ImageBlock({
   src,
@@ -25,6 +26,8 @@ export default function ImageBlock({
     x: 50,
     y: 50,
   });
+  const [isMouseInside, setIsMouseInside] = useState(false);
+  const [vignetteOpacity, setVignetteOpacity] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number | null>(null);
 
@@ -42,6 +45,13 @@ export default function ImageBlock({
         x: prev.x + (mousePosition.x - prev.x) * MOUSE_SMOOTHING_FACTOR,
         y: prev.y + (mousePosition.y - prev.y) * MOUSE_SMOOTHING_FACTOR,
       }));
+
+      const targetOpacity = isMouseInside ? 0.5 : 0;
+
+      setVignetteOpacity(
+        (prev) => prev + (targetOpacity - prev) * VIGNETTE_SMOOTHING_FACTOR * 2
+      );
+
       animationFrameRef.current = requestAnimationFrame(animate);
     };
 
@@ -52,7 +62,7 @@ export default function ImageBlock({
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [mousePosition]);
+  }, [mousePosition, isMouseInside]);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>): void => {
     if (!containerRef.current) {
@@ -66,20 +76,26 @@ export default function ImageBlock({
     setMousePosition({ x, y });
   };
 
+  const handleMouseEnter = (): void => {
+    setIsMouseInside(true);
+  };
+
   const handleMouseLeave = (): void => {
     setMousePosition({ x: 50, y: 50 });
+    setIsMouseInside(false);
   };
 
   return (
     <div
-      className="flex justify-center items-center w-full mb-6 h-80 overflow-hidden rounded-2xl relative bg-black"
+      className="flex justify-center items-center w-full mb-6 h-96 overflow-hidden rounded-2xl relative bg-black hover:opacity-75 transition-opacity duration-1000"
       ref={containerRef}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
     >
       <Image
         alt={alt}
-        className="w-full absolute opacity-80"
+        className="w-full absolute opacity-75"
         height={height}
         src={src}
         style={{
@@ -94,11 +110,15 @@ export default function ImageBlock({
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: `radial-gradient(circle 600px at ${smoothMousePosition.x}% ${smoothMousePosition.y}%, transparent 0%, transparent 10%, rgba(0,0,0,0.5) 100%)`,
+          backdropFilter: `blur(${vignetteOpacity * 8}px)`,
+          maskImage: `radial-gradient(circle 600px at ${smoothMousePosition.x}% ${smoothMousePosition.y}%, transparent 0%, transparent 10%, black 40%, black 100%)`,
+          WebkitMaskImage: `radial-gradient(circle 600px at ${smoothMousePosition.x}% ${smoothMousePosition.y}%, transparent 0%, transparent 10%, black 40%, black 100%)`,
         }}
       />
 
-      <span className="z-0 text-6xl font-thin tracking-wider">ABOUT</span>
+      <span className="z-0 text-6xl font-thin tracking-wider">
+        {alt.toUpperCase()}
+      </span>
     </div>
   );
 }
