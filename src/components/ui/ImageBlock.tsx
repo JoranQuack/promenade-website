@@ -87,7 +87,7 @@ export default function ImageBlock({
 
   return (
     <div
-      className="flex justify-center items-center w-full mb-6 h-96 overflow-hidden rounded-2xl relative bg-black hover:opacity-75 transition-opacity duration-1000"
+      className="flex justify-center items-center w-full mb-6 h-96 overflow-hidden rounded-2xl relative bg-black"
       ref={containerRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -95,7 +95,7 @@ export default function ImageBlock({
     >
       <Image
         alt={alt}
-        className="w-full absolute opacity-75"
+        className="w-full absolute opacity-75 hover:opacity-60 transition-opacity duration-1000"
         height={height}
         src={src}
         style={{
