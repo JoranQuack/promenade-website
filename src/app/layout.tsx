@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-
 import "./globals.css";
-import { CurrentPageProvider } from "@/components/shared/CurrentPageContext";
-import { Header } from "@/components/shared/Header";
-import { PageTransition } from "@/components/shared/PageTransition";
 
 const mundial = localFont({
   src: [
@@ -94,11 +90,7 @@ export default function RootLayout(
   return (
     <html lang="en">
       <body className={`${mundial.variable} antialiased bg-dark`}>
-        <CurrentPageProvider>
-          <Header />
-
-          <PageTransition>{props.children}</PageTransition>
-        </CurrentPageProvider>
+        {props.children}
       </body>
     </html>
   );

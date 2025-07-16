@@ -204,6 +204,7 @@ const eslintConfig = [
       "react/jsx-equals-spacing": ["error", "never"],
       "react/jsx-first-prop-new-line": ["error", "multiline-multiprop"],
       "react/jsx-fragments": ["error", "syntax"],
+      "react/jsx-indent": ["error", 2],
       "react/jsx-indent-props": ["error", 2],
       "react/jsx-max-props-per-line": [
         "error",
@@ -265,6 +266,7 @@ const eslintConfig = [
       ],
       "import/prefer-default-export": "off",
 
+      indent: ["error", 2],
       quotes: [
         "error",
         "double",

@@ -32,21 +32,8 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: var(--font-mundial), Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-perspective: 1000;
-  perspective: 1000;
 }
 
 p,
