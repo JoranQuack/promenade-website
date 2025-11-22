@@ -46,3 +46,7 @@ h5,
 h6 {
   @apply text-bright;
 }
+
+a {
+  @apply hover:opacity-70 transition-opacity duration-200;
+}
