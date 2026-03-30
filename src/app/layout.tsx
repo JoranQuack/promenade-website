@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Header } from "../components/shared/Header";
 
 const mundial = localFont({
   src: [
@@ -85,11 +86,12 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout(
-  props: React.PropsWithChildren<object>
+  props: React.PropsWithChildren<object>,
 ): React.ReactElement {
   return (
     <html lang="en">
       <body className={`${mundial.variable} antialiased bg-dark`}>
+        <Header />
         {props.children}
       </body>
     </html>

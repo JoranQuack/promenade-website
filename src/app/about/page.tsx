@@ -1,8 +1,5 @@
 import Image from "next/image";
-
-import { Header } from "@/components/shared/Header";
 import ImageBlock from "@/components/ui/ImageBlock";
-import { url } from "inspector";
 
 const members = [
   {
@@ -35,9 +32,7 @@ const members = [
 export default function About(): React.ReactElement {
   return (
     <div className="flex flex-col min-h-screen items-center">
-      <Header current="ABOUT" />
-
-      <main className="grow w-3/4 mt-26">
+      <main className="grow w-full max-w-5xl mt-24 px-2 sm:px-4">
         <ImageBlock alt="about" src="/about.jpg" />
 
         <p className="text-2xl text-center mb-2">
@@ -63,10 +58,10 @@ export default function About(): React.ReactElement {
           sequi dolor voluptatem.
         </p>
 
-        <div className="flex w-full gap-4 mb-12 h-[80vh]">
+        <div className="flex flex-col sm:flex-row w-full gap-4 mb-12 h-auto sm:h-[80vh]">
           {members.map((member) => (
             <div
-              className="flex-1 transition-all duration-500 ease-in-out hover:flex-5 group relative overflow-hidden rounded-2xl"
+              className="flex-1 min-h-[300px] transition-all duration-500 ease-in-out hover:flex-5 group relative overflow-hidden rounded-2xl"
               key={member.name}
             >
               <Image
@@ -77,14 +72,16 @@ export default function About(): React.ReactElement {
                 width={1000}
               />
 
-              <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:delay-300 p-12">
-                <h3 className="text-bright text-3xl font-bold mb-2">
+              <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 group-hover:delay-300 p-4 sm:p-12">
+                <h3 className="text-bright text-2xl sm:text-3xl font-bold mb-2">
                   {member.name}
                 </h3>
 
                 <h4 className="text-bright font-medium mb-3">{member.voice}</h4>
 
-                <p className="text-bright text-xl text-center">{member.bio}</p>
+                <p className="text-bright text-base sm:text-xl text-center">
+                  {member.bio}
+                </p>
 
                 {member.website && (
                   <a
