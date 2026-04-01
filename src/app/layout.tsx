@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Header from "@/components/shared/Header";
-import { getNavigation } from "@/lib/content";
+import Header from "../components/shared/Header";
 
 const mundial = localFont({
   src: [
@@ -89,11 +88,10 @@ export const metadata: Metadata = {
 export default function RootLayout(
   props: React.PropsWithChildren<object>,
 ): React.ReactElement {
-  const routes = getNavigation();
   return (
     <html lang="en">
       <body className={`${mundial.variable} antialiased bg-dark`}>
-        <Header routes={routes} />
+        <Header />
         <div className="mt-28">{props.children}</div>
       </body>
     </html>

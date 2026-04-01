@@ -1,32 +1,56 @@
 import ImageBlock from "@/components/ui/ImageBlock";
-import { getContactContent } from "@/lib/content";
 
 export default function ContactPage() {
-  const content = getContactContent();
-
   return (
     <div className="flex flex-col min-h-screen items-center">
       <main className="grow w-full max-w-2xl mt-24 px-2 sm:px-4 flex flex-col items-center">
-        <ImageBlock alt={content.bannerLabel} src={content.bannerImage} />
-        <h1 className="text-2xl sm:text-3xl font-bold mb-4 mt-6">
-          {content.pageTitle}
-        </h1>
+        <ImageBlock alt="contact" src="/contact.jpg" />
+        <h1 className="text-2xl sm:text-3xl font-bold mb-4 mt-6">Contact</h1>
         <p className="text-base sm:text-lg text-center max-w-md mb-6">
-          {content.pageSubtitle}
+          For bookings and inquiries, please email us at
           <a
-            href={`mailto:${content.emailAddress}`}
+            href="mailto:info@promenadequartet.com"
             className="underline text-pred ml-1"
           >
-            {content.emailLabel}
+            info@promenadequartet.com
           </a>
           .
         </p>
-        <a
-          className="bg-pred text-bright rounded p-3 px-8 font-semibold hover:opacity-80 transition"
-          href={`mailto:${content.emailAddress}`}
+        <form
+          className="w-full flex flex-col gap-4 bg-black/40 rounded-xl p-6"
+          onSubmit={(e) => e.preventDefault()}
         >
-          {content.ctaLabel}
-        </a>
+          <label className="flex flex-col">
+            <span className="mb-1">Name</span>
+            <input
+              type="text"
+              className="rounded p-2 bg-dark text-bright"
+              required
+            />
+          </label>
+          <label className="flex flex-col">
+            <span className="mb-1">Email</span>
+            <input
+              type="email"
+              className="rounded p-2 bg-dark text-bright"
+              required
+            />
+          </label>
+          <label className="flex flex-col">
+            <span className="mb-1">Message</span>
+            <textarea
+              className="rounded p-2 bg-dark text-bright"
+              rows={4}
+              required
+            />
+          </label>
+          <button
+            type="submit"
+            className="bg-pred text-bright rounded p-2 font-semibold hover:opacity-80 transition"
+          >
+            Send
+          </button>
+        </form>
       </main>
     </div>
   );
