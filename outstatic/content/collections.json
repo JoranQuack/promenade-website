@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Events",
+    "slug": "events",
+    "path": "outstatic/content/events",
+    "children": []
+  },
+  {
+    "title": "Members",
+    "slug": "members",
+    "path": "outstatic/content/members",
+    "children": []
+  },
+  {
+    "title": "Navigation",
+    "slug": "navigation",
+    "path": "outstatic/content/navigation",
+    "children": []
+  },
+  {
+    "title": "Tracks",
+    "slug": "tracks",
+    "path": "outstatic/content/tracks",
+    "children": []
+  }
+]
