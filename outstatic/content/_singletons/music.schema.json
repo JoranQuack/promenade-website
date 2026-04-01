@@ -1,0 +1,26 @@
+{
+  "title": "Music Page",
+  "type": "object",
+  "properties": {
+    "bannerImage": {
+      "title": "Banner Image",
+      "fieldType": "Image",
+      "dataType": "image"
+    },
+    "bannerLabel": {
+      "title": "Banner Label",
+      "fieldType": "String",
+      "dataType": "string"
+    },
+    "pageTitle": {
+      "title": "Page Title",
+      "fieldType": "String",
+      "dataType": "string"
+    },
+    "pageSubtitle": {
+      "title": "Page Subtitle",
+      "fieldType": "Text",
+      "dataType": "string"
+    }
+  }
+}

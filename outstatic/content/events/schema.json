@@ -1,0 +1,31 @@
+{
+  "title": "Events",
+  "type": "object",
+  "properties": {
+    "title": {
+      "title": "Title",
+      "fieldType": "String",
+      "dataType": "string"
+    },
+    "date": {
+      "title": "Date",
+      "fieldType": "Date",
+      "dataType": "date"
+    },
+    "location": {
+      "title": "Location",
+      "fieldType": "String",
+      "dataType": "string"
+    },
+    "description": {
+      "title": "Description",
+      "fieldType": "Text",
+      "dataType": "string"
+    },
+    "order": {
+      "title": "Order",
+      "fieldType": "Number",
+      "dataType": "number"
+    }
+  }
+}

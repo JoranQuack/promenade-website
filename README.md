@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Promenade Website
 
-## Getting Started
+This site uses Next.js + Outstatic so clients can edit all website content in a simple CMS dashboard.
 
-First, run the development server:
+## Run Locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` for the website.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Edit Content (Outstatic)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open `http://localhost:3000/outstatic`.
 
-## Learn More
+If `Sign in with GitHub` does nothing, configure self-hosted auth first:
 
-To learn more about Next.js, take a look at the following resources:
+1. Copy `.env.local.example` to `.env.local`.
+2. Create a GitHub OAuth App.
+3. Set callback URL to `http://localhost:3000/api/outstatic/callback`.
+4. Fill `OST_GITHUB_ID` and `OST_GITHUB_SECRET` in `.env.local`.
+5. Restart `npm run dev`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All editable website content is managed in these Outstatic areas:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `home` singleton: homepage hero title/subtitle
+- `about` singleton: about page heading/paragraphs/banner
+- `music` singleton: music page heading/subtitle/banner
+- `events` singleton: events page heading/subtitle/banner
+- `contact` singleton: contact heading/text/email/button/banner
+- `navigation` collection: header and mobile menu links
+- `members` collection: about page member cards
+- `events` collection: events list entries
+- `tracks` collection: music list entries
 
-## Deploy on Vercel
+Content files are stored in `outstatic/content` and automatically committed/deployed through your normal git workflow.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Build
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+```

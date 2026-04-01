@@ -1,0 +1,31 @@
+{
+  "title": "About Page",
+  "type": "object",
+  "properties": {
+    "bannerImage": {
+      "title": "Banner Image",
+      "fieldType": "Image",
+      "dataType": "image"
+    },
+    "bannerLabel": {
+      "title": "Banner Label",
+      "fieldType": "String",
+      "dataType": "string"
+    },
+    "introTitle": {
+      "title": "Intro Title",
+      "fieldType": "Text",
+      "dataType": "string"
+    },
+    "introParagraph": {
+      "title": "Intro Paragraph",
+      "fieldType": "Text",
+      "dataType": "string"
+    },
+    "bodyParagraph": {
+      "title": "Body Paragraph",
+      "fieldType": "Text",
+      "dataType": "string"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Homepage",
+  "type": "object",
+  "properties": {
+    "heroTitle": {
+      "title": "Hero Title",
+      "fieldType": "String",
+      "dataType": "string"
+    },
+    "heroSubtitle": {
+      "title": "Hero Subtitle",
+      "fieldType": "Text",
+      "dataType": "string"
+    }
+  }
+}

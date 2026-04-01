@@ -6,34 +6,17 @@ import { useState, useEffect } from "react";
 import { Squeeze as Hamburger } from "hamburger-react";
 import { usePathname } from "next/navigation";
 
-const routes = [
-  {
-    title: "HOME",
-    href: "/",
-  },
-  {
-    title: "ABOUT",
-    href: "/about",
-  },
-  {
-    title: "MUSIC",
-    href: "/music",
-  },
-  {
-    title: "EVENTS",
-    href: "/events",
-  },
-  {
-    title: "CONTACT",
-    href: "/contact",
-  },
-  {
-    title: "SHOP ↗",
-    href: "https://promenadequartet.digitees.co.nz/",
-  },
-];
+type HeaderRoute = {
+  title: string;
+  href: string;
+  openInNewTab?: boolean;
+};
 
-export default function Header() {
+type HeaderProps = {
+  routes: HeaderRoute[];
+};
+
+export default function Header({ routes }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [frozenScrolledState, setFrozenScrolledState] = useState(false);
@@ -76,7 +59,7 @@ export default function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex space-x-8">
-          {routes.map((route) => {
+          {routes.map((route, index) => {
             const isCurrent =
               route.href.startsWith("/") &&
               (route.href === "/"
@@ -88,13 +71,9 @@ export default function Header() {
                   isCurrent ? "text-pred font-light" : "text-bright font-thin"
                 }`}
                 href={route.href}
-                key={route.title}
-                target={route.href.startsWith("http") ? "_blank" : undefined}
-                rel={
-                  route.href.startsWith("http")
-                    ? "noopener noreferrer"
-                    : undefined
-                }
+                key={`${route.href}-${route.title}-${index}`}
+                target={route.openInNewTab ? "_blank" : undefined}
+                rel={route.openInNewTab ? "noopener noreferrer" : undefined}
               >
                 {route.title}
               </Link>
@@ -126,7 +105,7 @@ export default function Header() {
         `}
         aria-hidden={!menuOpen}
       >
-        {routes.map((route) => {
+        {routes.map((route, index) => {
           const isCurrent =
             route.href.startsWith("/") &&
             (route.href === "/"
@@ -138,14 +117,10 @@ export default function Header() {
                 isCurrent ? "text-pred font-light" : "text-bright font-thin"
               }`}
               href={route.href}
-              key={route.title}
+              key={`${route.href}-${route.title}-${index}`}
               onClick={() => setMenuOpen(false)}
-              target={route.href.startsWith("http") ? "_blank" : undefined}
-              rel={
-                route.href.startsWith("http")
-                  ? "noopener noreferrer"
-                  : undefined
-              }
+              target={route.openInNewTab ? "_blank" : undefined}
+              rel={route.openInNewTab ? "noopener noreferrer" : undefined}
             >
               {route.title}
             </Link>
