@@ -88,8 +88,8 @@ export default function RootLayout(
   props: React.PropsWithChildren<object>,
 ): React.ReactElement {
   return (
-    <html lang="en">
-      <body className={`${mundial.variable} antialiased bg-dark`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${mundial.variable} antialiased`}>
         {props.children}
       </body>
     </html>
