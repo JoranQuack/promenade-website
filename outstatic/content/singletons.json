@@ -1,22 +1,42 @@
 [
   {
-    "name": "home",
-    "label": "Home Page"
+    "title": "About",
+    "slug": "about",
+    "path": "outstatic/content/_singletons/about.md",
+    "directory": "outstatic/content/_singletons",
+    "publishedAt": "April 1, 2026",
+    "status": "published"
   },
   {
-    "name": "about",
-    "label": "About Page"
+    "title": "Contact",
+    "slug": "contact",
+    "path": "outstatic/content/_singletons/contact.md",
+    "directory": "outstatic/content/_singletons",
+    "publishedAt": "April 1, 2026",
+    "status": "published"
   },
   {
-    "name": "music",
-    "label": "Music Page"
+    "title": "Events",
+    "slug": "events",
+    "path": "outstatic/content/_singletons/events.md",
+    "directory": "outstatic/content/_singletons",
+    "publishedAt": "April 1, 2026",
+    "status": "published"
   },
   {
-    "name": "events",
-    "label": "Events Page"
+    "title": "Home",
+    "slug": "home",
+    "path": "outstatic/content/_singletons/home.md",
+    "directory": "outstatic/content/_singletons",
+    "publishedAt": "April 1, 2026",
+    "status": "published"
   },
   {
-    "name": "contact",
-    "label": "Contact Page"
+    "title": "Music",
+    "slug": "music",
+    "path": "outstatic/content/_singletons/music.md",
+    "directory": "outstatic/content/_singletons",
+    "publishedAt": "April 1, 2026",
+    "status": "published"
   }
 ]

@@ -1,18 +1,26 @@
 [
   {
-    "name": "navigation",
-    "label": "Navigation"
+    "title": "Events",
+    "slug": "events",
+    "path": "outstatic/content/events",
+    "children": []
   },
   {
-    "name": "members",
-    "label": "Members"
+    "title": "Members",
+    "slug": "members",
+    "path": "outstatic/content/members",
+    "children": []
   },
   {
-    "name": "events",
-    "label": "Events"
+    "title": "Navigation",
+    "slug": "navigation",
+    "path": "outstatic/content/navigation",
+    "children": []
   },
   {
-    "name": "tracks",
-    "label": "Tracks"
+    "title": "Tracks",
+    "slug": "tracks",
+    "path": "outstatic/content/tracks",
+    "children": []
   }
 ]
