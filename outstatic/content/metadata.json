@@ -1,25 +1,6 @@
 {
-  "commit": "",
-  "generated": "2026-04-01T06:56:05.550Z",
+  "commit": "fa60c0d1ab14cc84ff6980e9aa321b8d1b4206e3",
+  "generated": "2026-04-01T06:58:44.912Z",
   "metadata": [
-    {
-      "__outstatic": {
-        "commit": "",
-        "hash": "2215658180",
-        "path": "outstatic/content/events/hello-this-is-a-test.mdx"
-      },
-      "author": {
-        "name": "Joran Le Quellec",
-        "picture": "https://avatars.githubusercontent.com/u/48372164?v=4"
-      },
-      "collection": "events",
-      "date": "2026-04-08T12:00:00.000Z",
-      "description": "helloooooo",
-      "location": "right here",
-      "publishedAt": "2026-04-01T08:12:55.562Z",
-      "slug": "hello-this-is-a-test",
-      "status": "published",
-      "title": "Hello this is a test"
-    }
   ]
 }
