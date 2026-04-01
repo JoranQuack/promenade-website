@@ -1,0 +1,92 @@
+import localFont from "next/font/local";
+import Header from "../../components/shared/Header";
+import "../globals.css";
+
+const mundial = localFont({
+  src: [
+    {
+      path: "../../assets/fonts/MundialThin.otf",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../../assets/fonts/MundialThinItalic.otf",
+      weight: "100",
+      style: "italic",
+    },
+    {
+      path: "../../assets/fonts/MundialHair.otf",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "../../assets/fonts/MundialHairItalic.otf",
+      weight: "200",
+      style: "italic",
+    },
+    {
+      path: "../../assets/fonts/MundialLight.otf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../../assets/fonts/MundialLightItalic.otf",
+      weight: "300",
+      style: "italic",
+    },
+    {
+      path: "../../assets/fonts/MundialRegular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../assets/fonts/MundialItalic.otf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../../assets/fonts/MundialDemibold.otf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../assets/fonts/MundialDemiboldItalic.otf",
+      weight: "600",
+      style: "italic",
+    },
+    {
+      path: "../../assets/fonts/MundialBold.otf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../assets/fonts/MundialBoldItalic.otf",
+      weight: "700",
+      style: "italic",
+    },
+    {
+      path: "../../assets/fonts/MundialBlack.otf",
+      weight: "900",
+      style: "normal",
+    },
+    {
+      path: "../../assets/fonts/MundialBlackItalic.otf",
+      weight: "900",
+      style: "italic",
+    },
+  ],
+  variable: "--font-mundial",
+});
+
+export default function SiteLayout(
+  props: React.PropsWithChildren<object>,
+): React.ReactElement {
+  return (
+    <div
+      className={`${mundial.variable} ${mundial.className} antialiased bg-dark`}
+    >
+      <Header />
+      <div className="mt-28">{props.children}</div>
+    </div>
+  );
+}

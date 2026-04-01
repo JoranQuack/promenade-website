@@ -1,0 +1,12 @@
+import { defineType, defineField } from "sanity";
+
+export default defineType({
+  name: "track",
+  title: "Music Track",
+  type: "document",
+  fields: [
+    defineField({ name: "title", title: "Title", type: "string" }),
+    defineField({ name: "audioFile", title: "Audio File", type: "file", options: { accept: "audio/*" } }),
+    defineField({ name: "order", title: "Display Order", type: "number" }),
+  ],
+});
