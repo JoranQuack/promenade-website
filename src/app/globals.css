@@ -36,17 +36,17 @@ body {
   font-family: var(--font-mundial), Arial, Helvetica, sans-serif;
 }
 
-.site-theme p,
-.site-theme span,
-.site-theme h1,
-.site-theme h2,
-.site-theme h3,
-.site-theme h4,
-.site-theme h5,
-.site-theme h6 {
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   @apply text-bright;
 }
 
-.site-theme a {
+a {
   @apply hover:opacity-70 transition-opacity duration-200;
 }
