@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Header } from "../components/shared/Header";
+import Header from "../components/shared/Header";
 
 const mundial = localFont({
   src: [
@@ -92,7 +92,7 @@ export default function RootLayout(
     <html lang="en">
       <body className={`${mundial.variable} antialiased bg-dark`}>
         <Header />
-        {props.children}
+        <div className="mt-28">{props.children}</div>
       </body>
     </html>
   );

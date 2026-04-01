@@ -32,7 +32,7 @@ const members = [
 export default function About(): React.ReactElement {
   return (
     <div className="flex flex-col min-h-screen items-center">
-      <main className="grow w-full max-w-5xl mt-24 px-2 sm:px-4">
+      <main className="grow w-full max-w-5xl px-2 sm:px-4">
         <ImageBlock alt="about" src="/about.jpg" />
 
         <p className="text-2xl text-center mb-2">
