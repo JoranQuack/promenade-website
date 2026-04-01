@@ -1,0 +1,42 @@
+[
+  {
+    "title": "About",
+    "slug": "about",
+    "path": "outstatic/content/_singletons/about.md",
+    "directory": "outstatic/content/_singletons",
+    "publishedAt": "April 1, 2026",
+    "status": "published"
+  },
+  {
+    "title": "Contact",
+    "slug": "contact",
+    "path": "outstatic/content/_singletons/contact.md",
+    "directory": "outstatic/content/_singletons",
+    "publishedAt": "April 1, 2026",
+    "status": "published"
+  },
+  {
+    "title": "Events",
+    "slug": "events",
+    "path": "outstatic/content/_singletons/events.md",
+    "directory": "outstatic/content/_singletons",
+    "publishedAt": "April 1, 2026",
+    "status": "published"
+  },
+  {
+    "title": "Home",
+    "slug": "home",
+    "path": "outstatic/content/_singletons/home.md",
+    "directory": "outstatic/content/_singletons",
+    "publishedAt": "April 1, 2026",
+    "status": "published"
+  },
+  {
+    "title": "Music",
+    "slug": "music",
+    "path": "outstatic/content/_singletons/music.md",
+    "directory": "outstatic/content/_singletons",
+    "publishedAt": "April 1, 2026",
+    "status": "published"
+  }
+]
