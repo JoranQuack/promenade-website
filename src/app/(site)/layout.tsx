@@ -1,5 +1,8 @@
 import localFont from "next/font/local";
+import { groq } from "next-sanity";
 import Header from "../../components/shared/Header";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
 import "../globals.css";
 
 const mundial = localFont({
@@ -80,12 +83,38 @@ const mundial = localFont({
 
 export default function SiteLayout(
   props: React.PropsWithChildren<object>,
-): React.ReactElement {
+): Promise<React.ReactElement> {
+  return SiteLayoutContent(props);
+}
+
+const siteSettingsQuery = groq`*[_type == "siteSettings"][0]{
+  logo,
+  logoPath,
+  navigation[]{title, href, openInNewTab}
+}`;
+
+async function SiteLayoutContent(
+  props: React.PropsWithChildren<object>,
+): Promise<React.ReactElement> {
+  const settings = await client.fetch<{
+    logo?: unknown;
+    logoPath?: string;
+    navigation?: Array<{
+      title: string;
+      href: string;
+      openInNewTab?: boolean;
+    }>;
+  }>(siteSettingsQuery);
+
+  const logoSrc = settings?.logo
+    ? urlFor(settings.logo).width(600).url()
+    : settings?.logoPath;
+
   return (
     <div
       className={`${mundial.variable} ${mundial.className} antialiased bg-dark`}
     >
-      <Header />
+      <Header logoPath={logoSrc} routes={settings?.navigation ?? []} />
       <div className="mt-28">{props.children}</div>
     </div>
   );

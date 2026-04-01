@@ -1,9 +1,20 @@
 import type { Metadata } from "next";
-export const metadata: Metadata = {
-  title: "Promenade Quartet",
-  description:
-    "Promenade is a barbershop quartet based in Christchurch, New Zealand.",
-};
+import { groq } from "next-sanity";
+import { client } from "@/sanity/lib/client";
+
+const siteMetadataQuery = groq`*[_type == "siteSettings"][0]{siteTitle, siteDescription}`;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await client.fetch<{
+    siteTitle?: string;
+    siteDescription?: string;
+  }>(siteMetadataQuery);
+
+  return {
+    title: settings?.siteTitle,
+    description: settings?.siteDescription,
+  };
+}
 
 export default function RootLayout(
   props: React.PropsWithChildren<object>,
