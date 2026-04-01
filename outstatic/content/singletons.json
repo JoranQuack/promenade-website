@@ -1,0 +1,22 @@
+[
+  {
+    "name": "home",
+    "label": "Home Page"
+  },
+  {
+    "name": "about",
+    "label": "About Page"
+  },
+  {
+    "name": "music",
+    "label": "Music Page"
+  },
+  {
+    "name": "events",
+    "label": "Events Page"
+  },
+  {
+    "name": "contact",
+    "label": "Contact Page"
+  }
+]
