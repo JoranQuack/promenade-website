@@ -34,7 +34,7 @@ export default async function ContactPage() {
 
   return (
     <div className="flex flex-col min-h-screen items-center">
-      <main className="grow w-full max-w-2xl mt-24 px-2 sm:px-4 flex flex-col items-center">
+      <main className="grow w-full max-w-7xl px-2 sm:px-4 flex flex-col items-center">
         {heroImageSrc && <ImageBlock alt="contact" src={heroImageSrc} />}
         <h1 className="text-2xl sm:text-3xl font-bold mb-4 mt-6">
           {contact?.title}

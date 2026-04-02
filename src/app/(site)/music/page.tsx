@@ -35,7 +35,7 @@ export default async function MusicPage() {
 
   return (
     <div className="flex flex-col min-h-screen items-center">
-      <main className="grow w-full max-w-3xl mt-24 px-2 sm:px-4 flex flex-col items-center">
+      <main className="grow w-full max-w-7xl px-2 sm:px-4 flex flex-col items-center">
         {heroImageSrc && <ImageBlock alt="music" src={heroImageSrc} />}
         <h1 className="text-2xl sm:text-3xl font-bold mb-4 mt-6">
           {musicPage?.title}
