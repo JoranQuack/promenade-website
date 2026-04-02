@@ -4,14 +4,13 @@ import ImageBlock from "@/components/ui/ImageBlock";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 
-const aboutQuery = groq`*[_type == "about"][0]{heroImage, heroImagePath, intro, body}`;
+const aboutQuery = groq`*[_type == "about"][0]{heroImage, intro, body}`;
 const membersQuery = groq`*[_type == "member"] | order(order asc){
   _id,
   name,
   voice,
   bio,
   website,
-  photoPath,
   photo
 }`;
 
@@ -21,7 +20,6 @@ type MemberDoc = {
   voice: string;
   bio: string;
   website?: string;
-  photoPath?: string;
   photo?: unknown;
 };
 
@@ -29,7 +27,6 @@ export default async function About(): Promise<React.ReactElement> {
   const [about, members] = await Promise.all([
     client.fetch<{
       heroImage?: unknown;
-      heroImagePath?: string;
       intro?: string;
       body?: string;
     }>(aboutQuery),
@@ -38,7 +35,7 @@ export default async function About(): Promise<React.ReactElement> {
 
   const heroImageSrc = about?.heroImage
     ? urlFor(about.heroImage).width(2000).url()
-    : about?.heroImagePath;
+    : undefined;
 
   const normalizedMembers = members.map((member) => ({
     _id: member._id,
@@ -46,9 +43,7 @@ export default async function About(): Promise<React.ReactElement> {
     voice: member.voice,
     bio: member.bio,
     website: member.website,
-    photoSrc: member.photo
-      ? urlFor(member.photo).width(1200).url()
-      : (member.photoPath ?? ""),
+    photoSrc: member.photo ? urlFor(member.photo).width(1200).url() : "",
   }));
 
   return (

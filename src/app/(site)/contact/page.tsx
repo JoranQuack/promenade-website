@@ -5,7 +5,6 @@ import { urlFor } from "@/sanity/lib/image";
 
 const contactQuery = groq`*[_type == "contact"][0]{
   heroImage,
-  heroImagePath,
   title,
   intro,
   email,
@@ -18,7 +17,6 @@ const contactQuery = groq`*[_type == "contact"][0]{
 export default async function ContactPage() {
   const contact = await client.fetch<{
     heroImage?: unknown;
-    heroImagePath?: string;
     title?: string;
     intro?: string;
     email?: string;
@@ -30,7 +28,7 @@ export default async function ContactPage() {
 
   const heroImageSrc = contact?.heroImage
     ? urlFor(contact.heroImage).width(2000).url()
-    : contact?.heroImagePath;
+    : undefined;
 
   return (
     <div className="flex flex-col min-h-screen items-center">

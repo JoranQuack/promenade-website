@@ -108,7 +108,7 @@ async function SiteLayoutContent(
 
   const logoSrc = settings?.logo
     ? urlFor(settings.logo).width(600).url()
-    : settings?.logoPath;
+    : undefined;
 
   return (
     <div

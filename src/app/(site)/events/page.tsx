@@ -3,7 +3,7 @@ import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 
-const eventsPageQuery = groq`*[_type == "eventsPage"][0]{heroImage, heroImagePath, title, intro}`;
+const eventsPageQuery = groq`*[_type == "eventsPage"][0]{heroImage, title, intro}`;
 const eventsQuery = groq`*[_type == "event"] | order(date asc){_id, date, title, location, description}`;
 
 type EventDoc = {
@@ -18,7 +18,6 @@ export default async function EventsPage() {
   const [eventsPage, events] = await Promise.all([
     client.fetch<{
       heroImage?: unknown;
-      heroImagePath?: string;
       title?: string;
       intro?: string;
     }>(eventsPageQuery),
@@ -27,7 +26,7 @@ export default async function EventsPage() {
 
   const heroImageSrc = eventsPage?.heroImage
     ? urlFor(eventsPage.heroImage).width(2000).url()
-    : eventsPage?.heroImagePath;
+    : undefined;
 
   return (
     <div className="flex flex-col min-h-screen items-center">

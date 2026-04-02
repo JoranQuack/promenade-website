@@ -3,18 +3,16 @@ import { groq } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 
-const musicPageQuery = groq`*[_type == "musicPage"][0]{heroImage, heroImagePath, title, intro}`;
+const musicPageQuery = groq`*[_type == "musicPage"][0]{heroImage, title, intro}`;
 const tracksQuery = groq`*[_type == "track"] | order(order asc){
   _id,
   title,
-  audioPath,
   "audioFileUrl": audioFile.asset->url
 }`;
 
 type TrackDoc = {
   _id: string;
   title: string;
-  audioPath?: string;
   audioFileUrl?: string;
 };
 
@@ -22,7 +20,6 @@ export default async function MusicPage() {
   const [musicPage, tracks] = await Promise.all([
     client.fetch<{
       heroImage?: unknown;
-      heroImagePath?: string;
       title?: string;
       intro?: string;
     }>(musicPageQuery),
@@ -31,7 +28,7 @@ export default async function MusicPage() {
 
   const heroImageSrc = musicPage?.heroImage
     ? urlFor(musicPage.heroImage).width(2000).url()
-    : musicPage?.heroImagePath;
+    : undefined;
 
   return (
     <div className="flex flex-col min-h-screen items-center">
@@ -44,26 +41,20 @@ export default async function MusicPage() {
           {musicPage?.intro}
         </p>
         <div className="w-full flex flex-col gap-6">
-          {tracks.map((track) => {
-            const source = track.audioFileUrl ?? track.audioPath;
-
-            return (
-              <div
-                className="bg-black/40 rounded-xl p-4 flex flex-col items-center"
-                key={track._id}
-              >
-                <span className="font-semibold text-lg mb-2">
-                  {track.title}
-                </span>
-                {source && (
-                  <audio controls className="w-full max-w-xs">
-                    <source src={source} type="audio/mpeg" />
-                    Your browser does not support the audio element.
-                  </audio>
-                )}
-              </div>
-            );
-          })}
+          {tracks.map((track) => (
+            <div
+              className="bg-black/40 rounded-xl p-4 flex flex-col items-center"
+              key={track._id}
+            >
+              <span className="font-semibold text-lg mb-2">{track.title}</span>
+              {track.audioFileUrl && (
+                <audio controls className="w-full max-w-xs">
+                  <source src={track.audioFileUrl} type="audio/mpeg" />
+                  Your browser does not support the audio element.
+                </audio>
+              )}
+            </div>
+          ))}
         </div>
       </main>
     </div>
