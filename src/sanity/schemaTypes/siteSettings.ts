@@ -18,12 +18,6 @@ export default defineType({
       options: { hotspot: true },
     }),
     defineField({
-      name: "logoPath",
-      title: "Logo Path",
-      type: "string",
-      description: "Path in /public, e.g. /logo.png",
-    }),
-    defineField({
       name: "navigation",
       title: "Navigation",
       type: "array",
@@ -50,22 +44,4 @@ export default defineType({
       ],
     }),
   ],
-  initialValue: {
-    siteTitle: "Promenade Quartet",
-    siteDescription:
-      "Promenade is a barbershop quartet based in Christchurch, New Zealand.",
-    logoPath: "/logo.png",
-    navigation: [
-      { title: "HOME", href: "/", openInNewTab: false },
-      { title: "ABOUT", href: "/about", openInNewTab: false },
-      { title: "MUSIC", href: "/music", openInNewTab: false },
-      { title: "EVENTS", href: "/events", openInNewTab: false },
-      { title: "CONTACT", href: "/contact", openInNewTab: false },
-      {
-        title: "SHOP ↗",
-        href: "https://promenadequartet.digitees.co.nz/",
-        openInNewTab: true,
-      },
-    ],
-  },
 });
