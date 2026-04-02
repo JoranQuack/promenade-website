@@ -11,12 +11,6 @@ export default defineType({
       type: "image",
       options: { hotspot: true },
     }),
-    defineField({
-      name: "heroImagePath",
-      title: "Hero Image Path",
-      type: "string",
-      description: "Path in /public, e.g. /contact.jpg",
-    }),
     defineField({ name: "title", title: "Title", type: "string" }),
     defineField({ name: "email", title: "Email Address", type: "string" }),
     defineField({ name: "intro", title: "Intro Text", type: "text" }),
@@ -33,14 +27,4 @@ export default defineType({
       type: "string",
     }),
   ],
-  initialValue: {
-    heroImagePath: "/contact.jpg",
-    title: "Contact",
-    email: "info@promenadequartet.com",
-    intro: "For bookings and inquiries, please email us at",
-    nameLabel: "Name",
-    emailLabel: "Email",
-    messageLabel: "Message",
-    submitLabel: "Send",
-  },
 });

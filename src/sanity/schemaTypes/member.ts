@@ -9,12 +9,6 @@ export default defineType({
     defineField({ name: "voice", title: "Voice Part", type: "string" }),
     defineField({ name: "bio", title: "Bio", type: "text" }),
     defineField({
-      name: "photoPath",
-      title: "Local Photo Path",
-      type: "string",
-      description: "Path in /public, e.g. /willH.png",
-    }),
-    defineField({
       name: "photo",
       title: "Photo",
       type: "image",
