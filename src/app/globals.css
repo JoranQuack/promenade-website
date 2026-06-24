@@ -11,6 +11,7 @@
 
   --animate-fade-in: fadeInDelay 5s;
   --animate-fade-out: fadeOut 1s;
+  --animate-scroll-cue: scrollCue 1.8s ease-in-out infinite;
 }
 
 @keyframes fadeInDelay {
@@ -29,6 +30,15 @@
   }
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes scrollCue {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(200%);
   }
 }
 

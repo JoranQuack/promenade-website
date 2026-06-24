@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import { groq } from "next-sanity";
 import Header from "../../components/shared/Header";
+import SmoothScroll from "../../components/shared/SmoothScroll";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import "../globals.css";
@@ -114,6 +115,7 @@ async function SiteLayoutContent(
     <div
       className={`${mundial.variable} ${mundial.className} antialiased bg-dark`}
     >
+      <SmoothScroll />
       <Header logoPath={logoSrc} routes={settings?.navigation ?? []} />
       <div className="mt-28">{props.children}</div>
     </div>

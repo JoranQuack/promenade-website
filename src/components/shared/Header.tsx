@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Squeeze as Hamburger } from "hamburger-react";
-import { usePathname } from "next/navigation";
+import { scrollToElement } from "@/lib/lenis";
+
+const SCROLL_SPY_ROOT_MARGIN = "-50% 0px -50% 0px";
 
 type Route = {
   title: string;
@@ -22,8 +24,8 @@ export default function Header({
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [frozenScrolledState, setFrozenScrolledState] = useState(false);
+  const [activeId, setActiveId] = useState<string | null>(null);
   const tailwindColor = "var(--color-bright)";
-  const pathname = usePathname();
   const isCompactHeader = menuOpen ? frozenScrolledState : scrolled;
 
   useEffect(() => {
@@ -42,6 +44,48 @@ export default function Header({
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    const sectionIds = routes
+      .filter((route) => route.href.startsWith("#"))
+      .map((route) => route.href.slice(1));
+
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: SCROLL_SPY_ROOT_MARGIN, threshold: 0 },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, [routes]);
+
+  const handleNavClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ): void => {
+    if (!href.startsWith("#")) return;
+
+    const target = document.getElementById(href.slice(1));
+    if (!target) return;
+
+    event.preventDefault();
+    scrollToElement(target);
+    window.history.replaceState(null, "", href);
+    setActiveId(target.id);
+    setMenuOpen(false);
+  };
+
   return (
     <div>
       <header
@@ -49,7 +93,7 @@ export default function Header({
           ${isCompactHeader ? "bg-black/40 backdrop-blur-md h-20" : "bg-transparent backdrop-blur-none h-28"}
               `}
       >
-        <Link href="/">
+        <Link href="#home" onClick={(event) => handleNavClick(event, "#home")}>
           {logoPath && (
             <Image
               alt="logo"
@@ -68,10 +112,7 @@ export default function Header({
         <nav className="hidden md:flex space-x-8">
           {routes.map((route) => {
             const isCurrent =
-              route.href.startsWith("/") &&
-              (route.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(route.href));
+              route.href.startsWith("#") && activeId === route.href.slice(1);
             return (
               <Link
                 className={`text-bright hover:opacity-50 duration-300 text-lg leading-3 ${
@@ -79,6 +120,7 @@ export default function Header({
                 }`}
                 href={route.href}
                 key={route.title}
+                onClick={(event) => handleNavClick(event, route.href)}
                 target={route.openInNewTab ? "_blank" : undefined}
                 rel={route.openInNewTab ? "noopener noreferrer" : undefined}
               >
@@ -114,10 +156,7 @@ export default function Header({
       >
         {routes.map((route) => {
           const isCurrent =
-            route.href.startsWith("/") &&
-            (route.href === "/"
-              ? pathname === "/"
-              : pathname.startsWith(route.href));
+            route.href.startsWith("#") && activeId === route.href.slice(1);
           return (
             <Link
               className={`text-bright text-2xl ${
@@ -125,7 +164,7 @@ export default function Header({
               }`}
               href={route.href}
               key={route.title}
-              onClick={() => setMenuOpen(false)}
+              onClick={(event) => handleNavClick(event, route.href)}
               target={route.openInNewTab ? "_blank" : undefined}
               rel={route.openInNewTab ? "noopener noreferrer" : undefined}
             >
